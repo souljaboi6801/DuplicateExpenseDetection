@@ -1,0 +1,147 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent any extra scrollbars */
+    background-color: #f4f7f6;
+}
+
+/* Background Video */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(20%) blur(3px);
+}
+
+/* Admin Page Container */
+.admin-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    color: #fff;
+    position: relative; /* Keep it centered over the video */
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+/* Title */
+.admin-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #00bcd4;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Report Card Styling */
+.report-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.report-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    color: #fff;
+}
+
+.report-card:hover {
+    transform: scale(1.02);
+}
+
+.report-details h3, .report-details h4 {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.report-actions a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.view-button {
+    background-color: #0078ff;
+    box-shadow: 0 2px 6px rgba(0, 120, 255, 0.4);
+}
+
+.view-button:hover {
+    background-color: #005bb5;
+    box-shadow: 0 4px 8px rgba(0, 120, 255, 0.5);
+}
+
+.accept-button {
+    background-color: #28a745;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.accept-button:hover {
+    background-color: #218838;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Back Button */
+.admin-actions {
+    margin-top: 20px;
+}
+
+.back-button {
+    color: #00bcd4;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.back-button:hover {
+    color: #0288d1;
+    transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

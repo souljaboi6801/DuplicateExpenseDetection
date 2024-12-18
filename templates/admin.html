@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_admin.css') }}">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Admin Page Content -->
+    <div class="admin-container">
+        <h1 class="admin-title">Admin Dashboard</h1>
+
+        <!-- Admin Actions -->
+        <div class="admin-actions">
+            <a href="{{ url_for('flagged_duplicates') }}" class="action-button">
+                <i class="fa-solid fa-flag"></i> View Flagged Duplicates
+            </a>
+            <a href="{{ url_for('home') }}" class="action-button">
+                <i class="fa-solid fa-house"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Flagged Duplicate Reports Section -->
+    <div class="admin-container">
+        <h1 class="admin-title">Flagged Duplicate Reports</h1>
+
+        <!-- Report Cards -->
+        <div class="report-card-container">
+            {% for report in reports %}
+            <div class="report-card">
+                <div class="report-details">
+                    <h3><i class="fa-solid fa-file-lines"></i> Original File: {{ report['original_file'] }}</h3>
+                    <h4><i class="fa-solid fa-copy"></i> Duplicate File: {{ report['duplicate_file'] }}</h4>
+                    <p><strong>Confidence Score:</strong> {{ report['confidence'] }}</p>
+                </div>
+
+                <div class="report-actions">
+                    <!-- View Buttons -->
+                    <a href="{{ url_for('static', filename='uploads/' + report['original_file']) }}" 
+                        class="view-button" target="_blank">
+                        <i class="fa-solid fa-eye"></i> View Original
+                    </a>
+                    <a href="{{ url_for('static', filename='uploads/' + report['duplicate_file']) }}" 
+                        class="view-button" target="_blank">
+                        <i class="fa-solid fa-eye"></i> View Duplicate
+                    </a>
+
+                    <!-- Accept Button Form -->
+                    <form method="POST" action="{{ url_for('admin_page') }}">
+                        <input type="hidden" name="action" value="accept">
+                        <input type="hidden" name="file_id" value="{{ report['id'] }}">
+                        <button type="submit" class="accept-button"><i class="fa fa-check"></i> Accept</button>
+                    </form>
+
+                    <!-- Delete Button Form -->
+                    <form method="POST" action="{{ url_for('admin_page') }}">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="file_id" value="{{ report['id'] }}">
+                        <button type="submit" class="delete-button"><i class="fa fa-trash"></i> Delete</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Back to Admin Page -->
+        <div class="admin-actions">
+            <a href="{{ url_for('home') }}" class="back-button"><i class="fa-solid fa-house"></i> Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

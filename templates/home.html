@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_home.css') }}">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container">
+        <h1 class="admin-title">Welcome, <span>{{ session['user'].upper() }}</span>!</h1>
+        <p class="admin-subtitle">Manage and monitor your system effortlessly.</p>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-container">
+            <a href="{{ url_for('upload_file') }}" class="nav-button">
+                <i class="fa-solid fa-upload"></i> Upload Reports
+            </a>
+            <a href="#" class="nav-button" id="viewReportsButton" data-role="{{ session['role'] }}">
+                <i class="fa-solid fa-file-lines"></i> View Reports
+            </a>
+            <a href="{{ url_for('logout') }}" class="nav-button">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+        <!-- Warning Message -->
+        <div id="warningMessage" class="warning-bar" style="display: none;">
+            Admin Only: Access Denied.
+        </div>
+
+        <!-- Admin Features Section -->
+        <div class="features-section">
+            <h2>Dashboard Overview</h2>
+            <div class="features-container">
+                <!-- Total Reports -->
+                <div class="feature-item">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <h3>Total Reports</h3>
+                    <p>View and manage all uploaded expense reports in the system.</p>
+                </div>
+
+                <!-- Flagged Duplicates -->
+                <div class="feature-item">
+                    <i class="fa-solid fa-flag"></i>
+                    <h3>Flagged Duplicates</h3>
+                    <p>Review and verify flagged duplicate reports with confidence scores.</p>
+                </div>
+
+                <!-- Manage Users -->
+                <div class="feature-item">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <h3>Manage Users</h3>
+                    <p>Manage user access and permissions seamlessly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call-to-Action -->
+        <div class="cta-section">
+            <a href="{{ url_for('upload_file') }}" class="cta-button">Get Started</a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script_home.js') }}"></script>
+</body>
+</html>

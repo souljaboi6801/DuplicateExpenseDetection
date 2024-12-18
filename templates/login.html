@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Expense Duplicate Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_login.css') }}">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Login Section -->
+    <div class="home-container">
+        <h1 class="home-title">Welcome to <span>Expense Duplicate Detection</span></h1>
+        <p class="home-subtitle">Effortlessly identify and manage duplicate expense reports using OCR and AI.</p>
+
+        <!-- Login Form -->
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="login-form">
+                <input type="text" name="username" placeholder="Username" class="input-field" required>
+                <input type="password" name="password" placeholder="Password" class="input-field" required>
+                <button type="submit" class="cta-button">Login</button>
+            </div>
+        </form>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2>Why Choose Us?</h2>
+            <div class="features-container">
+                <!-- Feature 1 -->
+                <div class="feature-item">
+                    <i class="fa fa-search"></i>
+                    <h3>Accurate Detection</h3>
+                    <p>Utilizes advanced OCR and AI to identify duplicate expense reports with high accuracy.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-item">
+                    <i class="fa fa-clock"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Process and analyze large reports in seconds, saving you valuable time.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-item">
+                    <i class="fa fa-chart-line"></i>
+                    <h3>Detailed Reports</h3>
+                    <p>View comprehensive flagged duplicates with confidence scores for quick decisions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign Up Here</a></p>
+        </div>
+    </div>
+        <!-- Notification Script -->
+    <!-- Notification Container -->
+    <div id="notification-container" class="notification-container"></div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Expense Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_upload.css') }}">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Decorative Grid -->
+    <div class="grid-pattern"></div>
+
+    <!-- Animated Icons -->
+    <div class="decorative-icons">
+        <i class="fa-solid fa-cloud-upload animated-icon" style="top: 20%; left: 10%;"></i>
+        <i class="fa-solid fa-file-alt animated-icon" style="top: 70%; left: 15%;"></i>
+        <i class="fa-solid fa-cogs animated-icon" style="top: 25%; right: 10%;"></i>
+        <i class="fa-solid fa-chart-line animated-icon" style="bottom: 15%; right: 20%;"></i>
+    </div>
+
+    <!-- Upload Container -->
+    <div class="upload-container">
+        <h1 class="upload-title"><i class="fa-solid fa-file-arrow-up"></i> Upload Expense Report</h1>
+        <p class="upload-subtitle">Easily upload your PDF or image files to detect duplicates using AI.</p>
+
+        <!-- Upload Form -->
+        <form class="upload-form" method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+            <label for="file-upload" class="file-label">
+                <i class="fa-solid fa-cloud-upload"></i> Choose File
+                <input type="file" id="file-upload" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
+            </label>
+            <button type="submit" class="upload-button"><i class="fa-solid fa-upload"></i> Upload</button>
+        </form>
+
+        <!-- Action Links -->
+        <div class="action-links">
+            <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i> Back to Home</a>
+            <a href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+</body>
+</html>

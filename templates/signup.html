@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_signup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/fontawesome-free/css/all.min.css') }}">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Sign-Up Section -->
+    <div class="signup-container">
+        <h1 class="signup-title">WELCOME TO <span>EXPENSE DUPLICATE DETECTION</span></h1>
+        <p class="signup-subtitle">Create your account to identify and manage expense reports effortlessly.</p>
+        <form class="signup-form" action="/signup" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        <div class="login-prompt">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+        <h2></h2>
+        <div class="features-container">
+            <div class="feature-item">
+                <i class="fas fa-search"></i>
+                <h3>Accurate Detection</h3>
+                <p>Utilize advanced OCR and AI to detect duplicates with precision.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-bolt"></i>
+                <h3>Fast Processing</h3>
+                <p>Quickly analyze large reports and save you valuable time.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Detailed Reports</h3>
+                <p>View flagged duplicates with confidence scores for decisions.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
